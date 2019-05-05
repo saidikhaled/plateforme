@@ -15,7 +15,21 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+// static folders
 app.use(express.static(path.join(__dirname, '../public')));
+app.use('/js', express.static(path.join(__dirname, '/node_modules/bootstrap/dist/js'))); // redirect bootstrap JS
+app.use('/css', express.static(path.join(__dirname, '/node_modules/bootstrap/dist/css'))); // redirect CSS bootstrap
+app.use('/fontawesome', express.static(path.join(__dirname, '/node_modules/@fortawesome/fontawesome-free'))); // redirect CSS bootstrap
+
+// Express session
+app.use(
+	session({
+		secret            : 'secret',
+		resave            : true,
+		saveUninitialized : true
+	})
+);
 
 app.use('/', indexRouter);
 
