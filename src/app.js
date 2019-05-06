@@ -9,6 +9,23 @@ import expressLayouts from 'express-ejs-layouts';
 import mysql from 'mysql';
 import indexRouter from './routes/index';
 import usersRouter from './routes/users';
+
+// create conncetion
+const db = mysql.createConnection({
+	host     : 'localhost',
+	user     : 'khaled',
+	password : 'Teenwolfs1',
+	database : 'plateforme_db'
+});
+
+// connect
+db.connect((err) => {
+	if (err) {
+		throw err;
+	}
+	console.log('MySql Connected ...');
+});
+
 const app = express();
 
 // view engine setup
