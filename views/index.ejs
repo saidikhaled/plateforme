@@ -1,11 +1,42 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
-</html>
+<header>
+  <div class="row ">
+    <nav class="navbar navbar-expand-lg navbar   fixed-top">
+      <div class="col-2">
+        <a class="navbar-brand" href="/">Brainy &#8508</a> </div>
+      <div class="col-8 ">
+        <ul class="navbar-nav  justify-content-center">
+
+          <li class="nav-item ">
+            <a class=" nav-link " href="#">Home</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="#">F&Q</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="#">Brainstorming</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-2">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="nav-item ">
+            <a class="nav-link " href="/users/signup"><i class="fas fa-user"></i> Sign Up</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="/users/login"><i class="fas fa-sign-in-alt"></i> Login</a>
+          </li>
+        </ul>
+      </div>
+
+    </nav>
+</header>
+<div id="quote">
+  <div class="card-body">
+    <blockquote class="blockquote">
+      <pre>"In learning you will teach. 
+	              and in teaching you will learn"</pre>
+      <footer class="card-blockquote">-Phil Collins</footer>
+    </blockquote>
+  </div>
+</div>
+<a><span id="arrow"> <i class="fas fa-angle-down fa-5x"></i></span></a>
