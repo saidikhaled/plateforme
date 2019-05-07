@@ -34,6 +34,7 @@
     "@babel/preset-env": "^7.4.4",
     "eslint": "^5.16.0",
     "eslint-config-google": "^0.12.0",
+    "knex": "^0.16.5",
     "nodemon": "^1.19.0"
   },
   "description": "plateforme pour les enseignants",
