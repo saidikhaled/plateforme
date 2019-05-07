@@ -6,17 +6,12 @@ import path from 'path';
 import session from 'express-session';
 import bodyParser from 'body-parser';
 import expressLayouts from 'express-ejs-layouts';
-import mysql from 'mysql';
+
 import indexRouter from './routes/index';
 import usersRouter from './routes/users';
 
-// create conncetion
-const db = mysql.createConnection({
-	host     : 'localhost',
-	user     : 'khaled',
-	password : 'Teenwolfs1',
-	database : 'plateforme_db'
-});
+//require('dotenv').config();
+import db from '../config/db';
 
 // connect
 db.connect((err) => {
