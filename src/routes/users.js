@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-
 // Log in page
 router.get('/login', (req, res) => {
 	res.render('login');
