@@ -6,20 +6,30 @@ import path from 'path';
 import session from 'express-session';
 import bodyParser from 'body-parser';
 import expressLayouts from 'express-ejs-layouts';
-
+import expressValidator from 'express-validator';
+import passport from 'passport';
 import indexRouter from './routes/index';
 import usersRouter from './routes/users';
 
-//require('dotenv').config();
-import db from '../config/db';
 
-// connect
-db.connect((err) => {
-	if (err) {
-		throw err;
+const Knex = require('knex');
+
+const knex = new Knex({
+	client: 'pg',
+	connection: {
+		host: 'localhost',
+		user: 'khaled',
+		password: 'khaled',
+		database: 'plateforme_db',
+		charset: 'utf8'
 	}
-	console.log('MySql Connected ...');
 });
+
+const KnexSessionStore = require('connect-session-knex')(session);
+const store = new KnexSessionStore /* options here */({
+	knex: knex
+});
+
 
 const app = express();
 
@@ -30,7 +40,10 @@ app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+	extended: false
+}));
+app.use(expressValidator());
 app.use(cookieParser());
 
 // static folders
@@ -42,11 +55,14 @@ app.use('/fontawesome', express.static(path.join(__dirname, '../node_modules/@fo
 // Express session
 app.use(
 	session({
-		secret            : 'secret',
-		resave            : true,
-		saveUninitialized : true
+		secret: 'secret',
+		resave: false,
+		saveUninitialized: false
 	})
 );
+// intialize passport
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
